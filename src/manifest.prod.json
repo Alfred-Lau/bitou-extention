@@ -1,7 +1,7 @@
 {
-    "name": "awesome chrome extension boilerplate",
+    "name": "笔头营销研发工具",
     "version": "1.0",
-    "description": "made by awesome-chrome-extension-boilerplate",
+    "description": "笔头营销研发工具",
     "manifest_version": 2,
     "minimum_chrome_version": "80",
     "web_accessible_resources": ["icons/*", "images/*", "fonts/*"],
@@ -11,7 +11,7 @@
     },
     "content_scripts": [
         {
-            "matches": ["https://www.oceanbase.com/*"],
+            "matches": ["<all_urls>", "*://*/*"],
             "css": ["css/all.css"],
             "js": ["js/vendor.js", "js/all.js"]
         }
@@ -19,10 +19,10 @@
     "browser_action": {
         "default_popup": "popup.html",
         "default_icon": {
-            "16": "icons/extension-icon-x16.png",
-            "32": "icons/extension-icon-x32.png",
-            "48": "icons/extension-icon-x48.png",
-            "128": "icons/extension-icon-x128.png"
+            "16": "icons/128.png",
+            "32": "icons/128.png",
+            "48": "icons/128.png",
+            "128": "icons/128.png"
         }
     },
     "options_ui": {
@@ -30,10 +30,10 @@
         "open_in_tab": true
     },
     "icons": {
-        "16": "icons/extension-icon-x16.png",
-        "32": "icons/extension-icon-x32.png",
-        "48": "icons/extension-icon-x48.png",
-        "128": "icons/extension-icon-x128.png"
+        "16": "icons/128.png",
+        "32": "icons/128.png",
+        "48": "icons/128.png",
+        "128": "icons/128.png"
     },
     "host_permissions": ["<all_urls>", "*://*/*"],
     "permissions": [
