@@ -2,18 +2,45 @@ type ContextMenuItem = {
     id: string;
     title: string;
     contexts: chrome.contextMenus.ContextType[];
+    onClick?: (info: chrome.contextMenus.OnClickData, tab: chrome.tabs.Tab) => void;
 };
 
 const menus: ContextMenuItem[] = [
     {
-        id: 'open-website',
-        title: 'Open website',
-        contexts: ['page'],
+        id: 'click-count',
+        title: '查看数据',
+        contexts: ['page', 'selection'],
+        onClick: (info, tab) => {
+            console.log(
+                '🚀 ~ file: context-menu.ts:31 ~ chrome.contextMenus.onClicked.addListener ~ tab:',
+                tab,
+                info,
+            );
+        },
     },
     {
-        id: 'open-website2',
-        title: 'Open website2',
-        contexts: ['page'],
+        id: 'change-text',
+        title: '更换文案',
+        contexts: ['page', 'selection'],
+        onClick: (info, tab) => {
+            console.log(
+                '🚀 ~ file: context-menu.ts:31 ~ chrome.contextMenus.onClicked.addListener ~ tab:',
+                tab,
+                info,
+            );
+        },
+    },
+    {
+        id: 'edit-page',
+        title: '编辑页面',
+        contexts: ['page', 'selection'],
+        onClick: (info, tab) => {
+            console.log(
+                '🚀 ~ file: context-menu.ts:31 ~ chrome.contextMenus.onClicked.addListener ~ tab:',
+                tab,
+                info,
+            );
+        },
     },
 ];
 
