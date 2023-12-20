@@ -73,6 +73,7 @@ module.exports = {
         'unicorn/prefer-module': OFF,
         'unicorn/prefer-node-protocol': OFF,
         'unicorn/prevent-abbreviations': OFF,
+        'unicorn/expiring-todo-comments': OFF,
 
         '@typescript-eslint/explicit-function-return-type': OFF,
         '@typescript-eslint/no-explicit-any': OFF,

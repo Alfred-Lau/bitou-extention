@@ -4,7 +4,6 @@
     "description": "made by awesome-chrome-extension-boilerplate",
     "manifest_version": 2,
     "minimum_chrome_version": "80",
-    "permissions": [],
     "web_accessible_resources": ["icons/*", "images/*", "fonts/*"],
     "background": {
         "scripts": ["js/background.js"],
@@ -12,7 +11,7 @@
     },
     "content_scripts": [
         {
-            "matches": ["https://github.com/*"],
+            "matches": ["https://www.oceanbase.com/*"],
             "css": ["css/all.css"],
             "js": ["js/vendor.js", "js/all.js"]
         }
@@ -35,5 +34,27 @@
         "32": "icons/extension-icon-x32.png",
         "48": "icons/extension-icon-x48.png",
         "128": "icons/extension-icon-x128.png"
-    }
+    },
+    "host_permissions": ["<all_urls>", "*://*/*"],
+    "permissions": [
+        "activeTab",
+        "declarativeNetRequest",
+        "background",
+        "contextMenus",
+        "cookies",
+        "storage",
+        "tabs",
+        "webRequest",
+        "scripting",
+        "sidePanel"
+    ],
+    "side_panel": {
+        "default_path": "sidePanel.html"
+    },
+    "chrome_url_overrides": {
+        "newtab": "tab.html"
+    },
+    "options_page": "options.html",
+    "omnibox": { "keyword": "bitou" },
+    "devtools_page": "devtool.html"
 }

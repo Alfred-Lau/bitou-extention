@@ -81,6 +81,24 @@ const commonConfig: Configuration = {
             title: 'popup page',
             template: resolve(PROJECT_ROOT, 'public/popup.html'),
         }),
+        new HtmlWebpackPlugin({
+            chunks: ['devtool'],
+            filename: 'devtool.html',
+            title: 'devtool page',
+            template: resolve(PROJECT_ROOT, 'public/devtool.html'),
+        }),
+        new HtmlWebpackPlugin({
+            chunks: ['tab'],
+            filename: 'tab.html',
+            title: 'tab page',
+            template: resolve(PROJECT_ROOT, 'public/tab.html'),
+        }),
+        new HtmlWebpackPlugin({
+            chunks: ['devpanel'],
+            filename: 'devpanel.html',
+            title: 'devpanel page',
+            template: resolve(PROJECT_ROOT, 'public/devpanel.html'),
+        }),
         new MiniCssExtractPlugin({
             filename: `css/[name].css`,
             ignoreOrder: false,
