@@ -10,6 +10,58 @@ import WebpackBar from 'webpackbar';
 import { __DEV__, PROJECT_ROOT } from '../utils/constants';
 import entry from '../utils/entry';
 
+export type EntryType = {
+    chunks: string;
+    filename: string;
+    title: string;
+    template: string;
+};
+
+const templates: EntryType[] = [
+    {
+        chunks: 'options',
+        filename: 'options.html',
+        title: 'options page',
+        template: resolve(PROJECT_ROOT, 'public/options.html'),
+    },
+    {
+        chunks: 'popup',
+        filename: 'popup.html',
+        title: 'popup page',
+        template: resolve(PROJECT_ROOT, 'public/popup.html'),
+    },
+    {
+        chunks: 'devtool',
+        filename: 'devtool.html',
+        title: 'devtool page',
+        template: resolve(PROJECT_ROOT, 'public/devtool.html'),
+    },
+    {
+        chunks: 'tab',
+        filename: 'tab.html',
+        title: 'tab page',
+        template: resolve(PROJECT_ROOT, 'public/tab.html'),
+    },
+    {
+        chunks: 'devpanel',
+        filename: 'devpanel.html',
+        title: 'devpanel page',
+        template: resolve(PROJECT_ROOT, 'public/devpanel.html'),
+    },
+    {
+        chunks: 'setting',
+        filename: 'setting.html',
+        title: 'setting page',
+        template: resolve(PROJECT_ROOT, 'public/setting.html'),
+    },
+    {
+        chunks: 'sidepanel',
+        filename: 'sidepanel.html',
+        title: 'sidepanel page',
+        template: resolve(PROJECT_ROOT, 'public/sidepanel.html'),
+    },
+];
+
 function getCssLoaders(importLoaders: number) {
     return [
         {
@@ -24,6 +76,18 @@ function getCssLoaders(importLoaders: number) {
             },
         },
     ];
+}
+
+function getHtmlWebpackPlugins(entries: EntryType[]) {
+    return entries.map(
+        (ent) =>
+            new HtmlWebpackPlugin({
+                chunks: [ent.chunks],
+                filename: ent.filename,
+                title: ent.title,
+                template: ent.template,
+            }),
+    );
 }
 
 const commonConfig: Configuration = {
@@ -69,36 +133,7 @@ const commonConfig: Configuration = {
             color: '#0f9d58',
         }),
         // new FriendlyErrorsPlugin(),
-        new HtmlWebpackPlugin({
-            chunks: ['options'],
-            filename: 'options.html',
-            title: 'options page',
-            template: resolve(PROJECT_ROOT, 'public/options.html'),
-        }),
-        new HtmlWebpackPlugin({
-            chunks: ['popup'],
-            filename: 'popup.html',
-            title: 'popup page',
-            template: resolve(PROJECT_ROOT, 'public/popup.html'),
-        }),
-        new HtmlWebpackPlugin({
-            chunks: ['devtool'],
-            filename: 'devtool.html',
-            title: 'devtool page',
-            template: resolve(PROJECT_ROOT, 'public/devtool.html'),
-        }),
-        new HtmlWebpackPlugin({
-            chunks: ['tab'],
-            filename: 'tab.html',
-            title: 'tab page',
-            template: resolve(PROJECT_ROOT, 'public/tab.html'),
-        }),
-        new HtmlWebpackPlugin({
-            chunks: ['devpanel'],
-            filename: 'devpanel.html',
-            title: 'devpanel page',
-            template: resolve(PROJECT_ROOT, 'public/devpanel.html'),
-        }),
+        ...getHtmlWebpackPlugins(templates),
         new MiniCssExtractPlugin({
             filename: `css/[name].css`,
             ignoreOrder: false,
