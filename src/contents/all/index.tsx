@@ -1,3 +1,3 @@
 import './style.scss';
 
-console.log(`Current  https://www.oceanbase.com`);
+console.log(`Current  https://bitou.tech`);
