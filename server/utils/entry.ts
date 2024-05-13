@@ -15,6 +15,8 @@ const popupPath = resolve(src, './popup/index.tsx');
 const devToolPath = resolve(src, './devtool/index.tsx');
 const devPanelPath = resolve(src, './devpanel/index.tsx');
 const tabPath = resolve(src, './tab/index.tsx');
+const settingPath = resolve(src, './setting/index.tsx');
+const sidePanelPath = resolve(src, './sidepanel/index.tsx');
 
 const devEntry: Record<string, string[]> = {
     background: [HMRClientScript, backgroundPath],
@@ -23,6 +25,8 @@ const devEntry: Record<string, string[]> = {
     devtool: [HMRClientScript, devToolPath],
     devpanel: [HMRClientScript, devPanelPath],
     tab: [HMRClientScript, tabPath],
+    setting: [HMRClientScript, settingPath],
+    sidepanel: [HMRClientScript, sidePanelPath],
 };
 const prodEntry: Record<string, string[]> = {
     background: [backgroundPath],
@@ -31,6 +35,8 @@ const prodEntry: Record<string, string[]> = {
     devtool: [devToolPath],
     devpanel: [HMRClientScript, devPanelPath],
     tab: [tabPath],
+    setting: [settingPath],
+    sidepanel: [sidePanelPath],
 };
 const entry = __DEV__ ? devEntry : prodEntry;
 

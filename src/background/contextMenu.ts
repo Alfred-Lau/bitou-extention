@@ -35,11 +35,9 @@ const menus: ContextMenuItem[] = [
         title: '编辑页面',
         contexts: ['page', 'selection'],
         onClick: (info, tab) => {
-            console.log(
-                '🚀 ~ file: context-menu.ts:31 ~ chrome.contextMenus.onClicked.addListener ~ tab:',
-                tab,
-                info,
-            );
+            console.log('tabinfo', info, tab);
+            const editorUrl = chrome.runtime.getURL('setting.html');
+            window.open(editorUrl, '_blank');
         },
     },
 ];
@@ -50,9 +48,12 @@ export const createContextMenu = () => {
             id: menu.id,
             title: menu.title,
             contexts: menu.contexts,
+            onclick: menu.onClick,
         });
     });
+};
 
+export const createContextMenuListener = () => {
     chrome.contextMenus.onClicked.addListener((info, tab) => {
         console.log(
             '🚀 ~ file: context-menu.ts:31 ~ chrome.contextMenus.onClicked.addListener ~ tab:',
@@ -60,7 +61,7 @@ export const createContextMenu = () => {
         );
         if (info.menuItemId === 'open-website') {
             chrome.tabs.create({
-                url: 'https://www.google.com',
+                url: 'https://work.bitou.tech',
             });
         }
     });
